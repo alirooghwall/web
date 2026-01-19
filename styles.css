@@ -243,7 +243,6 @@ header.header-hidden {
 header.header-visible {
     transform: translateY(0);
     opacity: 1;
-    animation: headerSlideIn 0.6s ease;
 }
 
 @keyframes headerSlideIn {

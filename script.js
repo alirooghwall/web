@@ -176,8 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         console.log('Hiding loader');
         if (loader) {
-            loader.style.opacity = '0';
-            loader.style.transition = 'opacity 0.8s ease';
+            loader.classList.add('fade-out');
         }
         
         setTimeout(() => {
