@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DERMASAN</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e7e34;
+            --secondary-color: #155724;
+            --accent-color: #28a745;
+            --light-green: #d4edda;
+            --text-color: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 0;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 4px 0 30px rgba(30, 126, 52, 0.15);
+        }
+        
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .sidebar-header {
+            padding: 30px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .sidebar-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        .sidebar-logo i {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .sidebar-header h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-header p {
+            font-size: 13px;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 3px;
+            padding: 0 15px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: white;
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-menu a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sidebar-menu a.active::before {
+            transform: scaleY(1);
+        }
+
+        .sidebar-menu a i {
+            margin-right: 15px;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .sidebar-menu a span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .header:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .header h2 {
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info span {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .btn-logout {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-logout:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+        }
+        
+        .btn-logout:active {
+            transform: translateY(0);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dashboard Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0.05;
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .dashboard-card:hover::before {
+            transform: translate(20px, -20px) scale(1.2);
+            opacity: 0.08;
+        }
+
+        .dashboard-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .dashboard-card .number {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-card .subtitle {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Forms */
+        .form-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .form-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 15px;
+        }
+        
+        .form-group label i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(30, 126, 52, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-primary {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(30, 126, 52, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 126, 52, 0.4);
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .btn-danger {
+            padding: 8px 16px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        /* Image Preview */
+        .image-preview {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .image-preview img {
+            max-width: 300px;
+            max-height: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item-actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-item-info {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h1>DERMASAN</h1>
+            <p>Admin Control Panel</p>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="#" data-section="dashboard" class="active"><i class="fas fa-chart-line"></i><span>Dashboard</span></a></li>
+            <li><a href="#" data-section="hero"><i class="fas fa-home"></i><span>Hero Section</span></a></li>
+            <li><a href="#" data-section="about"><i class="fas fa-info-circle"></i><span>About Section</span></a></li>
+            <li><a href="#" data-section="vision"><i class="fas fa-eye"></i><span>Vision/Mission</span></a></li>
+            <li><a href="#" data-section="whychooseus"><i class="fas fa-star"></i><span>Why Choose Us</span></a></li>
+            <li><a href="#" data-section="products"><i class="fas fa-box-open"></i><span>Products</span></a></li>
+            <li><a href="#" data-section="gallery"><i class="fas fa-images"></i><span>Gallery</span></a></li>
+            <li><a href="#" data-section="testimonials"><i class="fas fa-comments"></i><span>Testimonials</span></a></li>
+            <li><a href="#" data-section="contact"><i class="fas fa-phone"></i><span>Contact Info</span></a></li>
+            <li><a href="#" data-section="footer"><i class="fas fa-align-center"></i><span>Footer</span></a></li>
+            <li><a href="#" data-section="settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h2 id="pageTitle">Dashboard</h2>
+            <div class="user-info">
+                <span><i class="fas fa-user-circle"></i> <span id="adminUsername">Admin</span></span>
+                <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+        <!-- Alert Box -->
+        <div id="alertBox" class="alert"></div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="content-section active">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-box"></i> Total Products</h3>
+                    <div class="number" id="totalProducts">0</div>
+                    <div class="subtitle">Active products</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-image"></i> Gallery Items</h3>
+                    <div class="number" id="totalGallery">0</div>
+                    <div class="subtitle">Media files</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-star"></i> Testimonials</h3>
+                    <div class="number" id="totalTestimonials">0</div>
+                    <div class="subtitle">Customer reviews</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-user-shield"></i> Admin User</h3>
+                    <div class="number" style="font-size: 24px;" id="dashboardUsername">-</div>
+                    <div class="subtitle">Current session</div>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <h3>Welcome to DERMASAN Admin Panel</h3>
+                <p>Use the sidebar menu to manage your website content. You can add products, upload gallery images, manage testimonials, and update site settings.</p>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="content-section">
+            <div class="form-card">
+                <h3>Add New Product</h3>
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="productCategory">Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="supplements">Supplements</option>
+                            <option value="cosmetics">Cosmetics</option>
+                            <option value="healthcare">Healthcare</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Product Name *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Description *</label>
+                        <textarea id="productDescription" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price</label>
+                        <input type="text" id="productPrice" placeholder="e.g., $29.99">
+                    </div>
+                    <div class="form-group">
+                        <label for="productImage">Product Image</label>
+                        <input type="file" id="productImage" accept="image/*">
+                        <div class="image-preview" id="productImagePreview"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Product</button>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 30px;">No products yet. Add your first product above.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div id="gallery" class="content-section">
+            <div class="form-card">
+                <h3>Upload Gallery Image/Video</h3>
+                <form id="galleryForm">
+                    <div class="form-group">
+                        <label for="galleryTitle"><i class="fas fa-heading"></i> Image/Video Title *</label>
+                        <input type="text" id="galleryTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="galleryCategory"><i class="fas fa-folder"></i> Category *</label>
+                        <select id="galleryCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="products">محصولات (Products)</option>
+                            <option value="team">جلسات تیمی (Team Meetings)</option>
+                            <option value="training">دوره‌های آموزشی (Training)</option>
+                            <option value="success">داستان‌های موفقیت (Success Stories)</option>
+                            <option value="events">رویدادها (Events)</option>
+                            <option value="community">جامعه درماسان (Community)</option>
+                        </select>
+                        <small style="color: #666; font-size: 13px; margin-top: 5px; display: block;">
+                            <strong>Note:</strong> All images will appear in the main gallery section. Category is for organization only.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="galleryImage"><i class="fas fa-file-image"></i> Image/Video File *</label>
+                        <input type="file" id="galleryImage" accept="image/*,video/*" required>
+                        <div class="image-preview" id="galleryImagePreview"></div>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-upload"></i> Upload to Gallery</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h3>Gallery Images</h3>
+                <div class="gallery-grid" id="galleryGrid">
+                    <p style="text-align: center; padding: 30px;">No images yet. Upload your first image above.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div id="testimonials" class="content-section">
+            <div class="form-card">
+                <h3>Add Testimonial</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="testimonialName">Customer Name *</label>
+                        <input type="text" id="testimonialName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialRole">Role/Position</label>
+                        <input type="text" id="testimonialRole" placeholder="e.g., Customer, CEO">
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialText">Testimonial Text *</label>
+                        <textarea id="testimonialText" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonialRating">Rating</label>
+                        <select id="testimonialRating">
+                            <option value="5">⭐⭐⭐⭐⭐ (5 stars)</option>
+                            <option value="4">⭐⭐⭐⭐ (4 stars)</option>
+                            <option value="3">⭐⭐⭐ (3 stars)</option>
+                            <option value="2">⭐⭐ (2 stars)</option>
+                            <option value="1">⭐ (1 star)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Testimonial</button>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Testimonial</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testimonialsTableBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 30px;">No testimonials yet. Add your first testimonial above.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div id="hero" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-home"></i> Hero Section Content</h3>
+                <form id="heroForm">
+                    <div class="form-group">
+                        <label for="heroTitle"><i class="fas fa-heading"></i> Main Title</label>
+                        <input type="text" id="heroTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroSubtitle"><i class="fas fa-text-height"></i> Subtitle</label>
+                        <input type="text" id="heroSubtitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroButtonText"><i class="fas fa-mouse-pointer"></i> Button Text</label>
+                        <input type="text" id="heroButtonText" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroButtonLink"><i class="fas fa-link"></i> Button Link</label>
+                        <input type="text" id="heroButtonLink" placeholder="#contact" required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Hero Section</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-info-circle"></i> About Section Content</h3>
+                <form id="aboutForm">
+                    <div class="form-group">
+                        <label for="aboutTitle"><i class="fas fa-heading"></i> Section Title</label>
+                        <input type="text" id="aboutTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutWhoWeAreTitle"><i class="fas fa-question-circle"></i> "Who We Are" Title</label>
+                        <input type="text" id="aboutWhoWeAreTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutParagraph1"><i class="fas fa-paragraph"></i> First Paragraph</label>
+                        <textarea id="aboutParagraph1" required rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutParagraph2"><i class="fas fa-paragraph"></i> Second Paragraph</label>
+                        <textarea id="aboutParagraph2" required rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save About Section</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Vision Section -->
+        <div id="vision" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                <form id="missionForm">
+                    <div class="form-group">
+                        <label for="missionIcon"><i class="fas fa-icons"></i> Icon Class (Font Awesome)</label>
+                        <input type="text" id="missionIcon" placeholder="fas fa-bullseye" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="missionTitle"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="missionTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="missionText"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="missionText" required rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Mission</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h3><i class="fas fa-star"></i> Vision</h3>
+                <form id="visionForm">
+                    <div class="form-group">
+                        <label for="visionIcon"><i class="fas fa-icons"></i> Icon Class (Font Awesome)</label>
+                        <input type="text" id="visionIcon" placeholder="fas fa-star" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="visionTitle"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="visionTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="visionText"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="visionText" required rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Vision</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h3><i class="fas fa-gem"></i> Values</h3>
+                <form id="valuesForm">
+                    <div class="form-group">
+                        <label for="valuesIcon"><i class="fas fa-icons"></i> Icon Class (Font Awesome)</label>
+                        <input type="text" id="valuesIcon" placeholder="fas fa-gem" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="valuesTitle"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="valuesTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="valuesText"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="valuesText" required rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Values</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div id="whychooseus" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-star"></i> Why Choose Us Section</h3>
+                <form id="whyChooseUsForm">
+                    <div class="form-group">
+                        <label for="whyTitle"><i class="fas fa-heading"></i> Section Title</label>
+                        <input type="text" id="whyTitle" required>
+                    </div>
+                    
+                    <h4 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Feature 1</h4>
+                    <div class="form-group">
+                        <label for="feature1Icon"><i class="fas fa-icons"></i> Icon Class</label>
+                        <input type="text" id="feature1Icon" placeholder="fas fa-check-circle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature1Title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="feature1Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature1Text"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="feature1Text" required rows="2"></textarea>
+                    </div>
+
+                    <h4 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Feature 2</h4>
+                    <div class="form-group">
+                        <label for="feature2Icon"><i class="fas fa-icons"></i> Icon Class</label>
+                        <input type="text" id="feature2Icon" placeholder="fas fa-chart-line" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature2Title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="feature2Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature2Text"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="feature2Text" required rows="2"></textarea>
+                    </div>
+
+                    <h4 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Feature 3</h4>
+                    <div class="form-group">
+                        <label for="feature3Icon"><i class="fas fa-icons"></i> Icon Class</label>
+                        <input type="text" id="feature3Icon" placeholder="fas fa-graduation-cap" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature3Title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="feature3Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature3Text"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="feature3Text" required rows="2"></textarea>
+                    </div>
+
+                    <h4 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Feature 4</h4>
+                    <div class="form-group">
+                        <label for="feature4Icon"><i class="fas fa-icons"></i> Icon Class</label>
+                        <input type="text" id="feature4Icon" placeholder="fas fa-users" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature4Title"><i class="fas fa-heading"></i> Title</label>
+                        <input type="text" id="feature4Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feature4Text"><i class="fas fa-paragraph"></i> Text</label>
+                        <textarea id="feature4Text" required rows="2"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Why Choose Us</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-phone"></i> Contact Information</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactTitle"><i class="fas fa-heading"></i> Section Title</label>
+                        <input type="text" id="contactTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone"><i class="fas fa-phone-alt"></i> Phone Number</label>
+                        <input type="text" id="contactPhone" placeholder="+93 79 658 2690" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactWhatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Number</label>
+                        <input type="text" id="contactWhatsapp" placeholder="+93796582690" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactAddress"><i class="fas fa-map-marker-alt"></i> Address</label>
+                        <textarea id="contactAddress" required rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactWorkingHours"><i class="fas fa-clock"></i> Working Hours</label>
+                        <input type="text" id="contactWorkingHours" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactClosedDays"><i class="fas fa-calendar-times"></i> Closed Days</label>
+                        <input type="text" id="contactClosedDays" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMapEmbed"><i class="fas fa-map"></i> Google Maps Embed URL</label>
+                        <input type="text" id="contactMapEmbed" placeholder="https://www.google.com/maps/embed?pb=..." required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Contact Info</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div id="footer" class="content-section">
+            <div class="form-card">
+                <h3><i class="fas fa-align-center"></i> Footer Content</h3>
+                <form id="footerForm">
+                    <div class="form-group">
+                        <label for="footerCompanyName"><i class="fas fa-building"></i> Company Name</label>
+                        <input type="text" id="footerCompanyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footerSubtitle"><i class="fas fa-text-height"></i> Subtitle</label>
+                        <input type="text" id="footerSubtitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footerTagline"><i class="fas fa-quote-right"></i> Tagline</label>
+                        <input type="text" id="footerTagline" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footerAboutText"><i class="fas fa-paragraph"></i> About Text</label>
+                        <textarea id="footerAboutText" required rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="footerCopyright"><i class="fas fa-copyright"></i> Copyright Text</label>
+                        <input type="text" id="footerCopyright" required>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Footer</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="content-section">
+            <div class="form-card">
+                <h3>Site Settings</h3>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="siteName">Site Name</label>
+                        <input type="text" id="siteName" value="DERMASAN">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescription">Site Description</label>
+                        <textarea id="siteDescription">International Health & Beauty Organization</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Contact Email</label>
+                        <input type="email" id="contactEmail" placeholder="info@dermasan.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Contact Phone</label>
+                        <input type="tel" id="contactPhone" placeholder="+1 234 567 890">
+                    </div>
+                    <button type="submit" class="btn-primary">Save Settings</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h3>Change Password</h3>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password *</label>
+                        <input type="password" id="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password *</label>
+                        <input type="password" id="newPassword" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password *</label>
+                        <input type="password" id="confirmPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn-primary">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

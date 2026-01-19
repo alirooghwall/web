@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Uploads
+uploads/
+!uploads/.gitkeep
+
+# Data files
+cms/data/*.json
+cms/data/*.backup.*
+!cms/data/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Build files
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Sessions
+sessions/
+
+# Package lock (optional - uncomment if you want to ignore)
+# package-lock.json

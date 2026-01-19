@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fa-AF" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محصولات بهداشتی و درمانی - DERMASAN</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-detail-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #0a2d1f 0%, #10402b 100%);
+            color: white;
+            text-align: center;
+        }
+        .product-detail-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .product-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 80px 0;
+        }
+        .product-detail-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(30, 126, 52, 0.2);
+        }
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-info h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .product-info p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        .product-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .product-features li i {
+            color: var(--primary-color);
+            margin-left: 0.5rem;
+        }
+        .btn-order {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-order:hover {
+            background: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="background: white; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="../Adobe ds- file۱.png" alt="DERMASAN Logo">
+                    <div class="logo-text">
+                        <span class="company-name">DERMASAN</span>
+                        <span class="company-subtitle">International Organization</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Detail Hero -->
+    <section class="product-detail-hero">
+        <div class="container">
+            <h1 data-translate="healthcare_title">محصولات بهداشتی و درمانی</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;" data-translate="healthcare_subtitle">محصولات باکیفیت برای سلامتی و زیبایی شما</p>
+            <a href="../index.html#products" class="back-link">
+                <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section style="background: #f9f9f9;">
+        <div class="container">
+            <div class="product-grid-detail">
+                <!-- Product 1 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-soap"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>صابون طبیعی درماسان</h3>
+                        <p>صابون طبیعی با مواد گیاهی خالص، مناسب برای تمام انواع پوست</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> ۱۰۰٪ طبیعی و ارگانیک</li>
+                            <li><i class="fas fa-check-circle"></i> بدون مواد شیمیایی</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب پوست حساس</li>
+                            <li><i class="fas fa-check-circle"></i> رایحه گیاهی طبیعی</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('صابون طبیعی')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>اسپری بهداشتی</h3>
+                        <p>اسپری ضد عفونی کننده با خاصیت آنتی باکتریال</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> ضد باکتری و ویروس</li>
+                            <li><i class="fas fa-check-circle"></i> سریع خشک می‌شود</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب برای دست و سطوح</li>
+                            <li><i class="fas fa-check-circle"></i> حاوی الکل ۷۰٪</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('اسپری بهداشتی')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>مکمل غذایی ویتامین C</h3>
+                        <p>قرص ویتامین C برای تقویت سیستم ایمنی بدن</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> ۱۰۰۰ میلی‌گرم در هر قرص</li>
+                            <li><i class="fas fa-check-circle"></i> تقویت سیستم ایمنی</li>
+                            <li><i class="fas fa-check-circle"></i> ضد اکسیدان قوی</li>
+                            <li><i class="fas fa-check-circle"></i> بسته ۶۰ عددی</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('ویتامین C')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-pump-medical"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>کرم مرطوب کننده</h3>
+                        <p>کرم مرطوب کننده پوست با عصاره‌های گیاهی</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> مرطوب کننده قوی</li>
+                            <li><i class="fas fa-check-circle"></i> ضد چروک و پیری</li>
+                            <li><i class="fas fa-check-circle"></i> حاوی ویتامین E</li>
+                            <li><i class="fas fa-check-circle"></i> ظرفیت ۱۰۰ میلی‌لیتر</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('کرم مرطوب کننده')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-band-aid"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>پماد التیام زخم</h3>
+                        <p>پماد طبیعی برای التیام سریع زخم‌ها</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> التیام سریع</li>
+                            <li><i class="fas fa-check-circle"></i> ضد عفونی طبیعی</li>
+                            <li><i class="fas fa-check-circle"></i> بدون عوارض جانبی</li>
+                            <li><i class="fas fa-check-circle"></i> حاوی عصاره آلوئه ورا</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('پماد التیام زخم')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-detail-card">
+                    <div class="product-image">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>خمیر دندان گیاهی</h3>
+                        <p>خمیر دندان با عصاره‌های طبیعی و نعناع</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> سفید کننده طبیعی</li>
+                            <li><i class="fas fa-check-circle"></i> محافظت از لثه</li>
+                            <li><i class="fas fa-check-circle"></i> رفع بوی بد دهان</li>
+                            <li><i class="fas fa-check-circle"></i> بدون فلوراید شیمیایی</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('خمیر دندان گیاهی')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2rem 0;">
+        <p>&copy; 2024 DERMASAN International Organization - تمامی حقوق محفوظ است</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://wa.me/93796582690" target="_blank" style="color: #25D366; text-decoration: none;">
+                <i class="fab fa-whatsapp"></i> تماس از طریق واتساپ
+            </a>
+        </p>
+    </footer>
+
+    <script src="../translations.js"></script>
+    <script>
+        function orderProduct(productName) {
+            const phone = '93796582690';
+            const message = `سلام، من می‌خواهم ${productName} را سفارش دهم.`;
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
