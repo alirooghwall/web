@@ -372,10 +372,10 @@ if (contactForm) {
 }
 
 // ===== SCROLL ANIMATIONS (AOS - Animate On Scroll) =====
-// Trigger animation when elements pass through the middle of the viewport
+// Trigger animation when elements enter from the bottom of the viewport
 const observerOptions = {
     threshold: 0,
-    rootMargin: '-50% 0px -50% 0px'
+    rootMargin: '0px 0px 0px 0px'
 };
 
 const observer = new IntersectionObserver(function(entries) {
@@ -426,12 +426,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0,
+        rootMargin: '0px 0px 0px 0px'
     });
     
     // Observe all interactive cards
-    const allCards = document.querySelectorAll('.vision-card, .product-card, .feature-item, .gallery-item, .contact-item');
+    const allCards = document.querySelectorAll('.vision-card, .product-card, .feature-item, .contact-item');
     allCards.forEach(card => cardObserver.observe(card));
 });
 
@@ -843,6 +843,7 @@ function closeCategoryGrid() {
 }
 
 function openLightbox(category, startIndex = 0) {
+    if (!lightbox) return;
     // Store current scroll position
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     
@@ -855,6 +856,7 @@ function openLightbox(category, startIndex = 0) {
 }
 
 function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove('active');
     document.body.classList.remove('lightbox-open');
     
@@ -1014,7 +1016,7 @@ if (lightboxPrev) {
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox || !lightbox.classList.contains('active')) return;
     
     if (e.key === 'Escape') {
         closeLightbox();

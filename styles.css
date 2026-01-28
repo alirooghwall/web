@@ -82,6 +82,10 @@ body {
     font-weight: 400;
 }
 
+section {
+    overflow-x: clip;
+}
+
 body.loading {
     overflow: hidden !important;
     height: 100vh;
