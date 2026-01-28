@@ -95,7 +95,7 @@ english: {
 #### In index.html:
 Search for these and update:
 - Phone: `+93 79 658 2690`
-- Address: `گولایی پارک، لیسه مریم`
+- Address: `حصه اول، شفاخانه فیضی. عقب پوهنتون کابورا`
 - WhatsApp: `93796582690`
 
 #### In translations.js:

@@ -146,9 +146,8 @@ async function loadContentFromCMS() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded - starting loader');
     
-    // Load content and gallery from CMS first
+    // Load content from CMS first
     loadContentFromCMS();
-    loadGalleryFromCMS();
     
     const loader = document.getElementById('logoLoader');
     const header = document.getElementById('mainHeader');
@@ -373,12 +372,10 @@ if (contactForm) {
 }
 
 // ===== SCROLL ANIMATIONS (AOS - Animate On Scroll) =====
-const isMobile = window.innerWidth <= 768;
-
-// Different observer options for mobile and desktop
+// Trigger animation when elements pass through the middle of the viewport
 const observerOptions = {
-    threshold: isMobile ? 0.05 : 0.15,
-    rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -100px 0px'
+    threshold: 0,
+    rootMargin: '-50% 0px -50% 0px'
 };
 
 const observer = new IntersectionObserver(function(entries) {
