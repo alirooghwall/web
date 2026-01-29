@@ -762,6 +762,18 @@ let currentGalleryCategory = null;
 let currentImageIndex = 0;
 let scrollPosition = 0;
 
+function lockBodyScroll() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.classList.add('scroll-locked');
+    document.body.style.top = `-${scrollPosition}px`;
+}
+
+function unlockBodyScroll() {
+    document.body.classList.remove('scroll-locked');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+}
+
 const lightbox = document.getElementById('galleryLightbox');
 const lightboxImage = document.getElementById('lightboxImage');
 const lightboxVideo = document.getElementById('lightboxVideo');
@@ -809,7 +821,7 @@ function openCategoryGrid(category) {
     if (!data.images || data.images.length === 0) {
         photosGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: #666; font-size: 16px;">هنوز تصویری در این دسته وجود ندارد</p>';
         categoryGridModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        lockBodyScroll();
         return;
     }
     
@@ -846,18 +858,18 @@ function openCategoryGrid(category) {
     
     // Show modal
     categoryGridModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
 }
 
 function closeCategoryGrid() {
     categoryGridModal.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
 }
 
 function openLightbox(category, startIndex = 0) {
     if (!lightbox) return;
-    // Store current scroll position
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    // Store current scroll position and lock body
+    lockBodyScroll();
     
     currentGalleryCategory = category;
     currentImageIndex = startIndex;
@@ -873,7 +885,7 @@ function closeLightbox() {
     document.body.classList.remove('lightbox-open');
     
     // Restore scroll position
-    window.scrollTo(0, scrollPosition);
+    unlockBodyScroll();
 }
 
 function generateThumbnails() {
