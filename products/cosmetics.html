@@ -34,16 +34,6 @@
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(30, 126, 52, 0.2);
         }
-        .product-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe6f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #d81b60;
-        }
         .product-info {
             padding: 1.5rem;
         }
@@ -121,8 +111,8 @@
     <!-- Product Detail Hero -->
     <section class="product-detail-hero">
         <div class="container">
-            <h1>محصولات آرایشی و زیبایی</h1>
-            <p style="font-size: 1.2rem; margin-top: 1rem;">زیبایی طبیعی با محصولات درماسان</p>
+            <h1>محصولات زیبایی و مراقبت پوست</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">مخصوص مراقبت پوست، مو، زیبایی و بهداشت فردی</p>
             <a href="../index.html#products" class="back-link">
                 <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
             </a>
@@ -133,39 +123,59 @@
     <section style="background: #f9f9f9;">
         <div class="container">
             <div class="product-grid-detail">
-                <!-- Product 1 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-tint"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>سرم ویتامین C</h3>
-                        <p>سرم روشن کننده و ضد لک صورت</p>
+                        <h3>کرم مرطوب‌کننده پوست</h3>
+                        <p>نرم‌کننده و آبرسان دست و صورت</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> روشن کننده پوست</li>
-                            <li><i class="fas fa-check-circle"></i> ضد لک و جوش</li>
-                            <li><i class="fas fa-check-circle"></i> جوان کننده پوست</li>
-                            <li><i class="fas fa-check-circle"></i> ظرفیت ۳۰ میلی‌لیتر</li>
+                            <li><i class="fas fa-check-circle"></i> آبرسان قوی</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب پوست خشک</li>
+                            <li><i class="fas fa-check-circle"></i> جذب سریع</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('سرم ویتامین C')">
+                        <button class="btn-order" onclick="orderProduct('کرم مرطوب‌کننده پوست')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>ماسک صورت کلاژن</h3>
-                        <p>ماسک ورقه‌ای با کلاژن طبیعی</p>
+                        <h3>مرطوب‌کننده ویتامین E</h3>
+                        <p>جلوگیری از خشکی و افزایش لطافت پوست</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> آبرسانی عمیق</li>
-                            <li><i class="fas fa-check-circle"></i> سفت کننده پوست</li>
-                            <li><i class="fas fa-check-circle"></i> ضد چروک</li>
-                            <li><i class="fas fa-check-circle"></i> بسته ۵ عددی</li>
+                            <li><i class="fas fa-check-circle"></i> حاوی ویتامین E</li>
+                            <li><i class="fas fa-check-circle"></i> افزایش لطافت پوست</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب استفاده روزانه</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('مرطوب‌کننده ویتامین E')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>کرم ضد لک</h3>
+                        <p>کاهش لک‌های پوستی و یکنواخت‌سازی رنگ پوست</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> کاهش لک</li>
+                            <li><i class="fas fa-check-circle"></i> روشن‌کننده پوست</li>
+                            <li><i class="fas fa-check-circle"></i> بافت سبک</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('کرم ضد لک')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>شامپو گیاهی</h3>
+                        <p>تقویت مو و کاهش شوره سر</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> کاهش شوره</li>
+                            <li><i class="fas fa-check-circle"></i> تقویت مو</li>
+                            <li><i class="fas fa-check-circle"></i> فرمول گیاهی</li>
                         </ul>
                         <button class="btn-order" onclick="orderProduct('شامپو گیاهی')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
@@ -173,81 +183,91 @@
                     </div>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-eye"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>کرم دور چشم</h3>
-                        <p>کرم ضد پف و تیرگی دور چشم</p>
+                        <h3>صابون زغال</h3>
+                        <p>پاکسازی عمیق پوست و کنترل چربی</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> رفع پف و تیرگی</li>
-                            <li><i class="fas fa-check-circle"></i> آبرسان و نرم کننده</li>
-                            <li><i class="fas fa-check-circle"></i> جلوگیری از چین و چروک</li>
-                            <li><i class="fas fa-check-circle"></i> ظرفیت ۲۰ گرم</li>
+                            <li><i class="fas fa-check-circle"></i> پاکسازی عمیق</li>
+                            <li><i class="fas fa-check-circle"></i> کنترل چربی</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب پوست چرب</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('کرم دور چشم')">
+                        <button class="btn-order" onclick="orderProduct('صابون زغال')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-sun"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>کرم ضد آفتاب SPF 50</h3>
-                        <p>محافظت کامل در برابر اشعه UV</p>
+                        <h3>صابون گوگرد</h3>
+                        <p>درمان جوش و مشکلات پوستی</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> SPF 50+ حرفه‌ای</li>
-                            <li><i class="fas fa-check-circle"></i> ضد آب و عرق</li>
+                            <li><i class="fas fa-check-circle"></i> ضد جوش</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب پوست مشکل‌دار</li>
+                            <li><i class="fas fa-check-circle"></i> پاک‌کننده پوست</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('صابون گوگرد')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>صابون بابونه</h3>
+                        <p>مناسب پوست حساس و ضد التهاب</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> ضد التهاب</li>
                             <li><i class="fas fa-check-circle"></i> مناسب پوست حساس</li>
-                            <li><i class="fas fa-check-circle"></i> ظرفیت ۵۰ میلی‌لیتر</li>
+                            <li><i class="fas fa-check-circle"></i> رایحه ملایم</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('کرم ضد آفتاب')">
+                        <button class="btn-order" onclick="orderProduct('صابون بابونه')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 5 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-lipstick"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>رژ لب طبیعی</h3>
-                        <p>رژ لب با رنگدانه‌های طبیعی</p>
+                        <h3>صابون سیاه‌دانه</h3>
+                        <p>ضد جوش و پاک‌کننده عمقی پوست</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> رنگ‌های متنوع</li>
-                            <li><i class="fas fa-check-circle"></i> مرطوب کننده</li>
-                            <li><i class="fas fa-check-circle"></i> ماندگاری بالا</li>
-                            <li><i class="fas fa-check-circle"></i> بدون مواد مضر</li>
+                            <li><i class="fas fa-check-circle"></i> ضد جوش</li>
+                            <li><i class="fas fa-check-circle"></i> پاکسازی عمقی</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب پوست مختلط</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('سرم ویتامین سی')">
+                        <button class="btn-order" onclick="orderProduct('صابون سیاه‌دانه')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 6 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-fire"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>عطر درماسان</h3>
-                        <p>عطر با رایحه گل‌های طبیعی</p>
+                        <h3>پک مراقبت پوست</h3>
+                        <p>مجموعه کامل محصولات مراقبت پوستی</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> رایحه ماندگار</li>
-                            <li><i class="fas fa-check-circle"></i> عصاره گل‌های طبیعی</li>
-                            <li><i class="fas fa-check-circle"></i> مناسب آقایان و بانوان</li>
-                            <li><i class="fas fa-check-circle"></i> ظرفیت ۵۰ میلی‌لیتر</li>
+                            <li><i class="fas fa-check-circle"></i> روتین کامل پوست</li>
+                            <li><i class="fas fa-check-circle"></i> مناسب انواع پوست</li>
+                            <li><i class="fas fa-check-circle"></i> کاربرد روزانه</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('عطر درماسان')">
+                        <button class="btn-order" onclick="orderProduct('پک مراقبت پوست')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>پک مراقبت مو</h3>
+                        <p>تقویت مو و کاهش ریزش</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> تقویت مو</li>
+                            <li><i class="fas fa-check-circle"></i> کاهش ریزش</li>
+                            <li><i class="fas fa-check-circle"></i> تغذیه پوست سر</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('پک مراقبت مو')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>

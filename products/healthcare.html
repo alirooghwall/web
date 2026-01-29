@@ -34,16 +34,6 @@
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(30, 126, 52, 0.2);
         }
-        .product-image {
-            width: 100%;
-            height: 300px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-color);
-        }
         .product-info {
             padding: 1.5rem;
         }
@@ -121,8 +111,8 @@
     <!-- Product Detail Hero -->
     <section class="product-detail-hero">
         <div class="container">
-            <h1 data-translate="healthcare_title">محصولات بهداشتی و درمانی</h1>
-            <p style="font-size: 1.2rem; margin-top: 1rem;" data-translate="healthcare_subtitle">محصولات باکیفیت برای سلامتی و زیبایی شما</p>
+            <h1 data-translate="healthcare_title">محصولات سلامت و تندرستی</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;" data-translate="healthcare_subtitle">تمرکز بر تقویت بدن، انرژی و سلامت عمومی</p>
             <a href="../index.html#products" class="back-link">
                 <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
             </a>
@@ -133,121 +123,106 @@
     <section style="background: #f9f9f9;">
         <div class="container">
             <div class="product-grid-detail">
-                <!-- Product 1 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-soap"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>صابون طبیعی درماسان</h3>
-                        <p>صابون طبیعی با مواد گیاهی خالص، مناسب برای تمام انواع پوست</p>
+                        <h3>قهوه لاغری</h3>
+                        <p>کمک به کاهش وزن و افزایش سوخت‌وساز بدن</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> ۱۰۰٪ طبیعی و ارگانیک</li>
-                            <li><i class="fas fa-check-circle"></i> بدون مواد شیمیایی</li>
-                            <li><i class="fas fa-check-circle"></i> مناسب پوست حساس</li>
-                            <li><i class="fas fa-check-circle"></i> رایحه گیاهی طبیعی</li>
+                            <li><i class="fas fa-check-circle"></i> افزایش متابولیسم</li>
+                            <li><i class="fas fa-check-circle"></i> کاهش اشتها</li>
+                            <li><i class="fas fa-check-circle"></i> انرژی روزانه بیشتر</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('صابون طبیعی')">
+                        <button class="btn-order" onclick="orderProduct('قهوه لاغری')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-spray-can"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>اسپری بهداشتی</h3>
-                        <p>اسپری ضد عفونی کننده با خاصیت آنتی باکتریال</p>
+                        <h3>قهوه سبز</h3>
+                        <p>چربی‌سوز، افزایش انرژی و کنترل وزن</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> ضد باکتری و ویروس</li>
-                            <li><i class="fas fa-check-circle"></i> سریع خشک می‌شود</li>
-                            <li><i class="fas fa-check-circle"></i> مناسب برای دست و سطوح</li>
-                            <li><i class="fas fa-check-circle"></i> حاوی الکل ۷۰٪</li>
+                            <li><i class="fas fa-check-circle"></i> چربی‌سوز طبیعی</li>
+                            <li><i class="fas fa-check-circle"></i> کنترل وزن</li>
+                            <li><i class="fas fa-check-circle"></i> افزایش انرژی</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('اسپری بهداشتی')">
+                        <button class="btn-order" onclick="orderProduct('قهوه سبز')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-prescription-bottle-alt"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>مکمل غذایی ویتامین C</h3>
-                        <p>قرص ویتامین C برای تقویت سیستم ایمنی بدن</p>
+                        <h3>سیر سیاه</h3>
+                        <p>تقویت سیستم ایمنی، کاهش فشار خون و سرشار از آنتی‌اکسیدان</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> ۱۰۰۰ میلی‌گرم در هر قرص</li>
+                            <li><i class="fas fa-check-circle"></i> تقویت ایمنی</li>
+                            <li><i class="fas fa-check-circle"></i> کاهش فشار خون</li>
+                            <li><i class="fas fa-check-circle"></i> آنتی‌اکسیدان بالا</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('سیر سیاه')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>شربت گیاهی</h3>
+                        <p>تقویت‌کننده بدن و افزایش مقاومت جسمی</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> تقویت عمومی بدن</li>
+                            <li><i class="fas fa-check-circle"></i> افزایش مقاومت جسمی</li>
+                            <li><i class="fas fa-check-circle"></i> ترکیبات گیاهی خالص</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('شربت گیاهی')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>شربت تقویتی</h3>
+                        <p>افزایش انرژی و کمک به رفع ضعف عمومی</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> افزایش انرژی</li>
+                            <li><i class="fas fa-check-circle"></i> رفع خستگی</li>
+                            <li><i class="fas fa-check-circle"></i> کمک به بازسازی بدن</li>
+                        </ul>
+                        <button class="btn-order" onclick="orderProduct('شربت تقویتی')">
+                            <i class="fas fa-shopping-cart"></i> سفارش محصول
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-detail-card">
+                    <div class="product-info">
+                        <h3>عسل طبیعی</h3>
+                        <p>تقویت‌کننده عمومی بدن و افزایش ایمنی</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> منبع انرژی طبیعی</li>
                             <li><i class="fas fa-check-circle"></i> تقویت سیستم ایمنی</li>
-                            <li><i class="fas fa-check-circle"></i> ضد اکسیدان قوی</li>
-                            <li><i class="fas fa-check-circle"></i> بسته ۶۰ عددی</li>
+                            <li><i class="fas fa-check-circle"></i> کیفیت خالص</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('ویتامین C')">
+                        <button class="btn-order" onclick="orderProduct('عسل طبیعی')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
                 <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-pump-medical"></i>
-                    </div>
                     <div class="product-info">
-                        <h3>کرم مرطوب کننده</h3>
-                        <p>کرم مرطوب کننده پوست با عصاره‌های گیاهی</p>
+                        <h3>تونیک مو گیاهی</h3>
+                        <p>جلوگیری از ریزش مو و تقویت ریشه</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> مرطوب کننده قوی</li>
-                            <li><i class="fas fa-check-circle"></i> ضد چروک و پیری</li>
-                            <li><i class="fas fa-check-circle"></i> حاوی ویتامین E</li>
-                            <li><i class="fas fa-check-circle"></i> ظرفیت ۱۰۰ میلی‌لیتر</li>
+                            <li><i class="fas fa-check-circle"></i> جلوگیری از ریزش</li>
+                            <li><i class="fas fa-check-circle"></i> تقویت ریشه مو</li>
+                            <li><i class="fas fa-check-circle"></i> ترکیبات گیاهی</li>
                         </ul>
-                        <button class="btn-order" onclick="orderProduct('کرم مرطوب کننده')">
-                            <i class="fas fa-shopping-cart"></i> سفارش محصول
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-band-aid"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>پماد التیام زخم</h3>
-                        <p>پماد طبیعی برای التیام سریع زخم‌ها</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> التیام سریع</li>
-                            <li><i class="fas fa-check-circle"></i> ضد عفونی طبیعی</li>
-                            <li><i class="fas fa-check-circle"></i> بدون عوارض جانبی</li>
-                            <li><i class="fas fa-check-circle"></i> حاوی عصاره آلوئه ورا</li>
-                        </ul>
-                        <button class="btn-order" onclick="orderProduct('پماد التیام زخم')">
-                            <i class="fas fa-shopping-cart"></i> سفارش محصول
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-detail-card">
-                    <div class="product-image">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>خمیر دندان گیاهی</h3>
-                        <p>خمیر دندان با عصاره‌های طبیعی و نعناع</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> سفید کننده طبیعی</li>
-                            <li><i class="fas fa-check-circle"></i> محافظت از لثه</li>
-                            <li><i class="fas fa-check-circle"></i> رفع بوی بد دهان</li>
-                            <li><i class="fas fa-check-circle"></i> بدون فلوراید شیمیایی</li>
-                        </ul>
-                        <button class="btn-order" onclick="orderProduct('خمیر دندان گیاهی')">
+                        <button class="btn-order" onclick="orderProduct('تونیک مو گیاهی')">
                             <i class="fas fa-shopping-cart"></i> سفارش محصول
                         </button>
                     </div>

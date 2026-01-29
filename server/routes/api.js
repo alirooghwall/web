@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/products', async (req, res) => {
     try {
         const products = await loadData('products') || [];
-        res.json({ success: true, data: products });
+        res.json({ success: true, products });
     } catch (error) {
         res.status(500).json({ 
             success: false, 
@@ -28,7 +28,7 @@ router.get('/products/:id', async (req, res) => {
         const product = products.find(p => p.id === req.params.id);
         
         if (product) {
-            res.json({ success: true, data: product });
+            res.json({ success: true, product });
         } else {
             res.status(404).json({ 
                 success: false, 
@@ -45,19 +45,16 @@ router.get('/products/:id', async (req, res) => {
 });
 
 // Create product (protected)
-router.post('/products', isAuthenticated, uploadSingle, handleUploadError, async (req, res) => {
+router.post('/products', isAuthenticated, async (req, res) => {
     try {
         const products = await loadData('products') || [];
-        
-        const fileUrl = req.file ? `/uploads/products/${req.file.filename}` : '';
-        
+
         const newProduct = sanitize({
             id: Date.now().toString(),
             category: req.body.category,
             name: req.body.name,
             description: req.body.description,
             price: req.body.price || '',
-            image: fileUrl,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         });
@@ -99,12 +96,15 @@ router.put('/products/:id', isAuthenticated, async (req, res) => {
             });
         }
         
+        const { image, ...safeBody } = req.body || {};
         products[index] = sanitize({
             ...products[index],
-            ...req.body,
+            ...safeBody,
             id: req.params.id, // Ensure ID doesn't change
             updatedAt: new Date().toISOString()
         });
+
+        delete products[index].image;
         
         const saved = await saveData('products', products);
         

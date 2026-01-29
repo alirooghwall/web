@@ -3,6 +3,16 @@ const API_BASE_URL = window.API_BASE_URL || '';
 const apiUrl = (path) => `${API_BASE_URL}${path}`;
 const resolveMediaUrl = (url) => (url && url.startsWith('/uploads') ? `${API_BASE_URL}${url}` : url);
 
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('pageshow', () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
+
 // ===== LOAD CONTENT FROM CMS =====
 async function loadContentFromCMS() {
     try {
@@ -194,6 +204,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Ensure we're at the top after unlocking
             window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
             
             // Start hero animations
             startHeroAnimations();
