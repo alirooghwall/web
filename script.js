@@ -3,6 +3,16 @@ const API_BASE_URL = window.API_BASE_URL || '';
 const apiUrl = (path) => `${API_BASE_URL}${path}`;
 const resolveMediaUrl = (url) => (url && url.startsWith('/uploads') ? `${API_BASE_URL}${url}` : url);
 
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('pageshow', () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
+
 // ===== LOAD CONTENT FROM CMS =====
 async function loadContentFromCMS() {
     try {
@@ -146,9 +156,8 @@ async function loadContentFromCMS() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded - starting loader');
     
-    // Load content and gallery from CMS first
+    // Load content from CMS first
     loadContentFromCMS();
-    loadGalleryFromCMS();
     
     const loader = document.getElementById('logoLoader');
     const header = document.getElementById('mainHeader');
@@ -176,8 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         console.log('Hiding loader');
         if (loader) {
-            loader.style.opacity = '0';
-            loader.style.transition = 'opacity 0.8s ease';
+            loader.classList.add('fade-out');
         }
         
         setTimeout(() => {
@@ -196,6 +204,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Ensure we're at the top after unlocking
             window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
             
             // Start hero animations
             startHeroAnimations();
@@ -374,12 +384,10 @@ if (contactForm) {
 }
 
 // ===== SCROLL ANIMATIONS (AOS - Animate On Scroll) =====
-const isMobile = window.innerWidth <= 768;
-
-// Different observer options for mobile and desktop
+// Trigger animation when elements enter from the bottom of the viewport
 const observerOptions = {
-    threshold: isMobile ? 0.05 : 0.15,
-    rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -100px 0px'
+    threshold: 0,
+    rootMargin: '0px 0px 0px 0px'
 };
 
 const observer = new IntersectionObserver(function(entries) {
@@ -430,12 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0,
+        rootMargin: '0px 0px 0px 0px'
     });
     
     // Observe all interactive cards
-    const allCards = document.querySelectorAll('.vision-card, .product-card, .feature-item, .gallery-item, .contact-item');
+    const allCards = document.querySelectorAll('.vision-card, .product-card, .feature-item, .contact-item');
     allCards.forEach(card => cardObserver.observe(card));
 });
 
@@ -847,6 +855,7 @@ function closeCategoryGrid() {
 }
 
 function openLightbox(category, startIndex = 0) {
+    if (!lightbox) return;
     // Store current scroll position
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     
@@ -859,6 +868,7 @@ function openLightbox(category, startIndex = 0) {
 }
 
 function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove('active');
     document.body.classList.remove('lightbox-open');
     
@@ -1018,7 +1028,7 @@ if (lightboxPrev) {
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox || !lightbox.classList.contains('active')) return;
     
     if (e.key === 'Escape') {
         closeLightbox();

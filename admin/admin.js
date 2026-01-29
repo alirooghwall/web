@@ -251,23 +251,21 @@ function initializeForms() {
 async function handleProductSubmit(e) {
     e.preventDefault();
     
-    const formData = new FormData();
-    formData.append('category', document.getElementById('productCategory').value);
-    formData.append('name', document.getElementById('productName').value);
-    formData.append('description', document.getElementById('productDescription').value);
-    formData.append('price', document.getElementById('productPrice').value);
-    
-    const imageFile = document.getElementById('productImage').files[0];
-    if (imageFile) {
-        formData.append('image', imageFile);
-        formData.append('type', 'products');
-    }
+    const payload = {
+        category: document.getElementById('productCategory').value,
+        name: document.getElementById('productName').value,
+        description: document.getElementById('productDescription').value,
+        price: document.getElementById('productPrice').value
+    };
     
     try {
             const response = await fetch(apiUrl('/api/products'), {
             method: 'POST',
             credentials: 'include',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
         });
         
         const data = await response.json();
@@ -275,7 +273,6 @@ async function handleProductSubmit(e) {
         if (data.success || data.product) {
             showAlert('Product added successfully!', 'success');
             e.target.reset();
-            document.getElementById('productImagePreview').style.display = 'none';
             await loadProducts();
             updateDashboard();
         } else {
@@ -616,11 +613,6 @@ async function handlePasswordSubmit(e) {
 // ==================== File Input Preview ====================
 
 function initializeFileInputs() {
-    // Product Image Preview
-    document.getElementById('productImage').addEventListener('change', (e) => {
-        previewImage(e.target, 'productImagePreview');
-    });
-    
     // Gallery Image Preview
     document.getElementById('galleryImage').addEventListener('change', (e) => {
         previewImage(e.target, 'galleryImagePreview');

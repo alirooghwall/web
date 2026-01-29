@@ -39,7 +39,6 @@
                     <li><a href="#about"><i class="fas fa-info-circle"></i> <span data-translate="nav_about">درباره ما</span></a></li>
                     <li><a href="#vision"><i class="fas fa-eye"></i> <span data-translate="nav_vision">چشم‌انداز</span></a></li>
                     <li><a href="#products"><i class="fas fa-box-open"></i> <span data-translate="nav_products">محصولات</span></a></li>
-                    <li><a href="#gallery"><i class="fas fa-images"></i> <span data-translate="nav_gallery">گالری</span></a></li>
                     <li><a href="#contact"><i class="fas fa-envelope"></i> <span data-translate="nav_contact">تماس با ما</span></a></li>
                     <li class="nav-divider"></li>
                     <li class="language-switcher-nav">
@@ -247,39 +246,26 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
+    <!-- Photo Showcase Section -->
+    <section id="photos" class="photo-showcase">
         <div class="container">
             <div class="section-header">
-                <h2 data-translate="gallery_title">گالری تصاویر</h2>
+                <h2 data-translate="photos_title">تصاویر</h2>
                 <div class="divider"></div>
-                <p class="section-description" data-translate="gallery_subtitle">نگاهی به فعالیت‌ها و محصولات ما</p>
+                <p class="section-description" data-translate="photos_subtitle">نمایی کوتاه از محیط ما</p>
             </div>
-            
-            <!-- Gallery Images Grid with Captions -->
-            <div class="gallery-images-grid" id="galleryImagesGrid">
-                <!-- Images will be loaded dynamically from CMS -->
-            </div>
-            
-            <!-- Load More Button -->
-            <div class="gallery-load-more" id="galleryLoadMoreContainer" style="display: none;">
-                <button class="btn-load-more" id="galleryLoadMoreBtn">
-                    <i class="fas fa-images"></i>
-                    <span data-translate="gallery_load_more">مشاهده تصاویر بیشتر</span>
-                </button>
-            </div>
-            
-            <!-- Category Photo Grid Modal -->
-            <div id="categoryGrid" class="category-grid-modal">
-                <div class="category-grid-overlay"></div>
-                <div class="category-grid-content">
-                    <button class="category-grid-close" aria-label="بستن">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <h3 id="categoryGridTitle" class="category-grid-title"></h3>
-                    <div id="categoryPhotosGrid" class="category-photos-grid">
-                        <!-- Photos will be loaded here -->
+            <div class="gallery-images-grid">
+                <div class="gallery-image-item" data-aos="zoom-in">
+                    <div class="gallery-image-container">
+                        <img src="a.jpeg" alt="تصویر اول">
                     </div>
+                    <div class="gallery-image-caption" data-translate="photos_caption_1">نمای داخلی</div>
+                </div>
+                <div class="gallery-image-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-image-container">
+                        <img src="b.jpeg" alt="تصویر دوم">
+                    </div>
+                    <div class="gallery-image-caption" data-translate="photos_caption_2">نمای داخلی</div>
                 </div>
             </div>
         </div>
@@ -302,7 +288,7 @@
                         <div class="contact-details">
                             <h4 data-translate="phone_label">تلفن - دفتر مرکزی</h4>
                             <p dir="ltr"><a href="tel:+93796582690" style="color: inherit; text-decoration: none;">+93 79 658 2690</a></p>
-                            <p><a href="https://wa.me/93796582690" target="_blank" style="color: #25D366; text-decoration: none;"><i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_label">واتساپ</span></a></p>
+                            <p><a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_label">واتساپ</span></a></p>
                         </div>
                     </div>
                     <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
@@ -311,7 +297,7 @@
                         </div>
                         <div class="contact-details">
                             <h4 data-translate="address_label">آدرس</h4>
-                            <p data-translate="address_text">گولایی پارک، لیسه مریم خورشید مارکیت، منزل پنجم</p>
+                            <p data-translate="address_text">حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
                         </div>
                     </div>
                     <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
@@ -331,7 +317,7 @@
                     <h3 data-translate="map_title">موقعیت دفتر مرکزی</h3>
                     <div class="map-container">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.0!2d69.1776!3d34.5553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMzJzE5LjEiTiA2OcKwMTAnMzkuNCJF!5e0!3m2!1sen!2s!4v1234567890"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13141.651479795188!2d69.120597!3d34.5684183!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d16fbe4a155555%3A0x1e76dde7094e7217!2sFaizi%20Hospital!5e0!3m2!1sen!2s!4v1769622967857!5m2!1sen!2s"
                             width="100%" 
                             height="400" 
                             style="border:0; border-radius: 15px;" 
@@ -339,44 +325,13 @@
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
-                        <p class="map-note"><i class="fas fa-map-marker-alt"></i> گولایی پارک، لیسه مریم، خورشید مارکیت، منزل پنجم</p>
+                        <p class="map-note"><i class="fas fa-map-marker-alt"></i> حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lightbox Modal for Gallery -->
-    <div id="galleryLightbox" class="lightbox-modal">
-        <div class="lightbox-overlay"></div>
-        <div class="lightbox-content">
-            <button class="lightbox-close" aria-label="بستن">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="lightbox-prev" aria-label="قبلی">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <button class="lightbox-next" aria-label="بعدی">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="lightbox-header">
-                <h3 id="lightboxTitle"></h3>
-            </div>
-            <div class="lightbox-images">
-                <img id="lightboxImage" src="" alt="" style="display: none;">
-                <video id="lightboxVideo" controls style="display: none; width: 100%; max-height: 70vh; border-radius: 10px;">
-                    <source src="" type="video/mp4">
-                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-                </video>
-            </div>
-            <div class="lightbox-counter">
-                <span id="lightboxCounter"></span>
-            </div>
-            <div class="lightbox-thumbnails" id="lightboxThumbnails">
-                <!-- Thumbnails will be dynamically inserted here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -399,15 +354,14 @@
                         <li><a href="#about">درباره ما</a></li>
                         <li><a href="#vision">چشم‌انداز</a></li>
                         <li><a href="#products">محصولات</a></li>
-                        <li><a href="#gallery">گالری</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>تماس</h4>
                     <ul>
                         <li><i class="fas fa-phone-alt"></i> دفتر مرکزی: <span dir="ltr"><a href="tel:+93796582690" style="color: inherit;">+93 79 658 2690</a></span></li>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/93796582690" target="_blank" style="color: #25D366;">واتساپ</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> گولایی پارک، لیسه مریم، خورشید مارکیت، منزل پنجم</li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link">واتساپ</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</li>
                         <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</li>
                     </ul>
                 </div>
@@ -417,7 +371,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; ۲۰۲۵ DERMASAN International Organization - تمامی حقوق محفوظ است.</p>
+                <p>&copy; ۲۰۲۶ DERMASAN International Organization - تمامی حقوق محفوظ است.</p>
             </div>
         </div>
     </footer>

@@ -40,6 +40,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(40, 167, 69, 0.1) 0%, transparent 70%);
             animation: rotate 30s linear infinite;
+            pointer-events: none;
         }
         
         @keyframes rotate {
@@ -55,6 +56,8 @@
             max-width: 400px;
             width: 100%;
             animation: slideIn 0.5s ease-out;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes slideIn {
@@ -86,6 +89,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: headerFloat 15s ease-in-out infinite;
+            pointer-events: none;
         }
         
         @keyframes headerFloat {

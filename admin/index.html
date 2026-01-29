@@ -32,20 +32,27 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
             color: var(--text-color);
             min-height: 100vh;
+            margin: 0;
+        }
+
+        .admin-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 30px;
         }
 
         /* Sidebar */
         .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
+            position: sticky;
+            top: 30px;
             width: 280px;
-            height: 100vh;
+            min-height: calc(100vh - 60px);
             background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 0;
-            overflow-y: auto;
-            z-index: 1000;
+            overflow: visible;
+            z-index: 1;
             transition: var(--transition);
             box-shadow: 4px 0 30px rgba(30, 126, 52, 0.15);
         }
@@ -175,9 +182,28 @@
 
         /* Main Content */
         .main-content {
-            margin-left: 280px;
+            flex: 1;
+            margin-left: 0;
             padding: 30px;
             min-height: 100vh;
+        }
+
+        @media (max-width: 992px) {
+            .admin-layout {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .main-content {
+                width: 100%;
+            }
         }
 
         /* Header */
@@ -573,16 +599,8 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.mobile-open {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
+            .admin-layout {
+                gap: 20px;
             }
 
             .header {
@@ -597,8 +615,9 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
                 <i class="fas fa-leaf"></i>
@@ -620,10 +639,10 @@
             <li><a href="#" data-section="footer"><i class="fas fa-align-center"></i><span>Footer</span></a></li>
             <li><a href="#" data-section="settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
         </ul>
-    </div>
+        </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
+        <!-- Main Content -->
+        <div class="main-content">
         <!-- Header -->
         <div class="header">
             <h2 id="pageTitle">Dashboard</h2>
@@ -692,11 +711,6 @@
                     <div class="form-group">
                         <label for="productPrice">Price</label>
                         <input type="text" id="productPrice" placeholder="e.g., $29.99">
-                    </div>
-                    <div class="form-group">
-                        <label for="productImage">Product Image</label>
-                        <input type="file" id="productImage" accept="image/*">
-                        <div class="image-preview" id="productImagePreview"></div>
                     </div>
                     <button type="submit" class="btn-primary">Add Product</button>
                 </form>

@@ -139,9 +139,10 @@ app.use((req, res) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`
+// Start server (skip in Vercel serverless runtime)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`
 ╔══════════════════════════════════════════╗
 ║     DERMASAN Admin Server Running        ║
 ╠══════════════════════════════════════════╣
@@ -150,6 +151,7 @@ app.listen(PORT, () => {
 ║  Admin Panel: http://localhost:${PORT}/admin  ║
 ╚══════════════════════════════════════════╝
     `);
-});
+    });
+}
 
 module.exports = app;
