@@ -734,7 +734,7 @@ header.header-visible {
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    opacity: 0;
+    opacity: 1;
     position: relative;
     overflow: hidden;
 }
@@ -756,7 +756,7 @@ header.header-visible {
 }
 
 .hero-badge.animate-in {
-    animation: fadeInUp 1s ease forwards;
+    animation: none;
 }
 
 .hero-badge i {
@@ -773,26 +773,26 @@ header.header-visible {
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     line-height: 1.4;
 }
 
 .hero-title.animate-in {
-    animation: fadeInUp 1s ease 0.2s forwards;
+    animation: none;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 2.5rem;
     font-weight: 400;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-subtitle.animate-in {
-    animation: fadeInUp 1s ease 0.4s forwards;
+    animation: none;
 }
 
 .hero-features {
@@ -801,11 +801,11 @@ header.header-visible {
     gap: 2rem;
     margin-bottom: 2.5rem;
     flex-wrap: wrap;
-    opacity: 0;
+    opacity: 1;
 }
 
 .hero-features.animate-in {
-    animation: fadeInUp 1s ease 0.6s forwards;
+    animation: none;
 }
 
 .hero-feature {
@@ -866,11 +866,11 @@ header.header-visible {
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
-    opacity: 0;
+    opacity: 1;
 }
 
 .hero-buttons.animate-in {
-    animation: fadeInUp 1s ease 0.8s forwards;
+    animation: none;
 }
 
 .btn-hero-primary {
@@ -1033,12 +1033,12 @@ header.header-visible {
     font-size: 1rem;
     position: relative;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
 }
 
 .btn.animate-in {
-    animation: fadeInUp 1s ease 0.6s forwards;
+    animation: none;
 }
 
 .btn::before {
@@ -2196,7 +2196,7 @@ body.lightbox-open {
     height: 100%;
     z-index: 10000;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: none;
 }
 
 .lightbox-modal.active {
@@ -2915,8 +2915,9 @@ body.lightbox-open {
 
 /* ===== SCROLL ANIMATIONS ===== */
 [data-aos] {
-    opacity: 0;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 1;
+    transform: none;
+    transition: none;
 }
 
 [data-aos].aos-animate {
@@ -2924,35 +2925,35 @@ body.lightbox-open {
 }
 
 [data-aos="fade-up"].aos-animate {
-    animation: bounceInUp 0.8s ease-out forwards;
+    animation: none;
 }
 
 [data-aos="fade-up"] {
-    transform: translateY(30px);
+    transform: none;
 }
 
 [data-aos="zoom-in"].aos-animate {
-    animation: zoomBounce 0.8s ease-out forwards;
+    animation: none;
 }
 
 [data-aos="zoom-in"] {
-    transform: scale(0.8);
+    transform: none;
 }
 
 [data-aos="fade-right"].aos-animate {
-    animation: slideInRight 0.8s ease-out forwards;
+    animation: none;
 }
 
 [data-aos="fade-right"] {
-    transform: translateX(50px);
+    transform: none;
 }
 
 [data-aos="fade-left"].aos-animate {
-    animation: slideInLeft 0.8s ease-out forwards;
+    animation: none;
 }
 
 [data-aos="fade-left"] {
-    transform: translateX(-50px);
+    transform: none;
 }
 
 @keyframes bounceInUp {
