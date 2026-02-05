@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>DERMASAN - نهاد بین المللی درماسان</title>
+    <title>DERMASAN | صفحه سلیمان فدوی</title>
+    <meta name="description" content="صفحه رسمی سلیمان فدوی در DERMASAN — معلومات، سفارش و راهنمایی">
+    <meta name="theme-color" content="#0f5132">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +20,7 @@
         <div class="loader-content">
             <img src="logo.png" alt="DERMASAN Logo" class="loader-logo">
             <h1 class="loader-text">DERMASAN</h1>
-            <p class="loader-subtitle">International Organization</p>
+            <p class="loader-subtitle" data-translate="company_subtitle">صفحه رسمی سلیمان فدوی</p>
             <div class="loader-progress">
                 <div class="loader-bar"></div>
             </div>
@@ -32,7 +34,7 @@
                     <img src="logo.png" alt="DERMASAN Logo">
                     <div class="logo-text">
                         <span class="company-name">DERMASAN</span>
-                        <span class="company-subtitle">International Organization</span>
+                        <span class="company-subtitle" data-translate="company_subtitle">صفحه رسمی سلیمان فدوی</span>
                     </div>
                 </div>
                 <ul class="nav-menu">
@@ -66,20 +68,29 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-particles"></div>
-        <div class="container hero-content">
-            <!-- Logo Test (Temporary) -->
-            <div class="logo-showcase" style="margin-bottom: 2rem;">
-                <img src="logo.png" alt="لوگوی شرکت" style="width: 150px; height: 150px;">
+        <div class="container hero-layout">
+            <p class="hero-kicker">
+                <span class="hero-company">DERMASAN</span>
+                <span class="hero-sep">•</span>
+                <span data-translate="hero_kicker">صفحه رسمی</span>
+            </p>
+            <div class="hero-text">
+                <h1 class="hero-title">Sulaiman Fedawi</h1>
+                <p class="hero-subtitle animate-in" data-translate="hero_subtitle">با راهنمایی سلیمان فدوی — مسیر شما به سوی موفقیت و استقلال مالی</p>
+
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#contact" class="btn-hero-primary">
+                        <i class="fas fa-phone-alt"></i> <span data-translate="hero_btn">همین حالا با سلیمان تماس بگیرید</span>
+                    </a>
+                    <a href="#products" class="btn-hero-secondary">
+                        <i class="fas fa-box-open"></i> <span data-translate="hero_btn_secondary">مشاهده محصولات</span>
+                    </a>
+                </div>
             </div>
-            <h1 class="hero-title animate-in" data-translate="hero_title">به نهاد بین المللی درماسان خوش آمدید</h1>
-            <p class="hero-subtitle animate-in" data-translate="hero_subtitle">مسیر شما به سوی موفقیت و استقلال مالی</p>
-            <a href="#contact" class="btn btn-primary animate-in">
-                <i class="fas fa-phone-alt"></i> <span data-translate="hero_btn">همین حالا با ما تماس بگیرید</span>
-            </a>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+
+            <div class="hero-media" data-aos="fade-up" data-aos-delay="150">
+                <img src="huh.jpg" alt="Sulaiman Fedawi" class="hero-photo">
+            </div>
         </div>
     </section>
 
@@ -99,6 +110,21 @@
                     <p data-translate="about_text2">
                         ما با تکیه بر اصول اخلاقی، شفافیت و تعهد به موفقیت مشتریان و همکاران خود، یک محیط حرفه‌ای و حمایتی را فراهم کرده‌ایم که در آن هر فردی می‌تواند با تلاش و پشتکار به موفقیت دست یابد.
                     </p>
+                </div>
+
+                <div class="rep-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="rep-card-top">
+                        <img src="huh.jpg" alt="Sulaiman Fedawi" class="rep-photo">
+                        <div class="rep-titles">
+                            <h3 class="rep-name">Sulaiman Fedawi</h3>
+                            <p class="rep-role" data-translate="rep_role">کارمند در درماسان</p>
+                            <p class="rep-note" data-translate="rep_note">برای سفارش و معلومات، مستقیم تماس بگیرید.</p>
+                            <a class="rep-link" href="#contact">
+                                <i class="fas fa-phone-alt"></i>
+                                <span data-translate="rep_cta">راه‌های تماس</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -281,24 +307,39 @@
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3 data-translate="contact_info">اطلاعات تماس</h3>
-                    <div class="contact-item" data-aos="fade-up">
+                    <h3 data-translate="contact_info_rep">راه‌های ارتباط</h3>
+
+                    <div class="contact-item contact-item--rep" data-aos="fade-up">
                         <div class="contact-icon-wrapper">
-                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-user-check"></i>
                         </div>
                         <div class="contact-details">
-                            <h4 data-translate="phone_label">تلفن - دفتر مرکزی</h4>
-                            <p dir="ltr"><a href="tel:+93796582690" style="color: inherit; text-decoration: none;">+93 79 658 2690</a></p>
-                            <p><a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_label">واتساپ</span></a></p>
+                            <h4 data-translate="rep_contact_label">نماینده: سلیمان فدوی</h4>
+                            <p dir="ltr" class="rep-phone-line">
+                                <a href="#" data-rep-tel class="rep-phone-link">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span data-rep-phone-text></span>
+                                </a>
+                            </p>
+
+                            <div class="rep-actions">
+                                <a href="#" data-rep-whatsapp target="_blank" rel="noopener" class="rep-action">
+                                    <i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_sulaiman">پیام در واتساپ</span>
+                                </a>
+                                <a href="#" data-rep-tel class="rep-action">
+                                    <i class="fas fa-phone-alt"></i> <span data-translate="call_sulaiman">تماس با سلیمان</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                     <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="contact-icon-wrapper">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
                             <h4 data-translate="address_label">آدرس</h4>
-                            <p data-translate="address_text">حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
+                            <p data-translate="address_text" data-contact-address>حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
                         </div>
                     </div>
                     <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
@@ -307,8 +348,8 @@
                         </div>
                         <div class="contact-details">
                             <h4 data-translate="hours_label">ساعات کاری</h4>
-                            <p data-translate="hours_text">شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</p>
-                            <p data-translate="hours_closed">جمعه: تعطیل</p>
+                            <p data-translate="hours_text" data-contact-hours>شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</p>
+                            <p data-translate="hours_closed" data-contact-closed>جمعه: تعطیل</p>
                         </div>
                     </div>
                 </div>
@@ -319,6 +360,7 @@
                     <div class="map-container">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13141.651479795188!2d69.120597!3d34.5684183!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d16fbe4a155555%3A0x1e76dde7094e7217!2sFaizi%20Hospital!5e0!3m2!1sen!2s!4v1769622967857!5m2!1sen!2s"
+                            data-contact-map
                             width="100%" 
                             height="400" 
                             style="border:0; border-radius: 15px;" 
@@ -343,10 +385,10 @@
                         <img src="logo.png" alt="DERMASAN Logo">
                         <div>
                             <h3>DERMASAN</h3>
-                            <span class="footer-subtitle">International Organization</span>
+                            <span class="footer-subtitle" data-translate="company_subtitle">صفحه رسمی سلیمان فدوی</span>
                         </div>
                     </div>
-                    <p>مسیر شما به سوی موفقیت و استقلال مالی</p>
+                    <p data-footer-tagline>مسیر شما به سوی موفقیت و استقلال مالی</p>
                 </div>
                 <div class="footer-section">
                     <h4>لینک‌های سریع</h4>
@@ -360,19 +402,18 @@
                 <div class="footer-section">
                     <h4>تماس</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt"></i> دفتر مرکزی: <span dir="ltr"><a href="tel:+93796582690" style="color: inherit;">+93 79 658 2690</a></span></li>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link">واتساپ</a></li>
+                        <li><i class="fas fa-user-check"></i> <a href="#contact">راه‌های تماس با سلیمان فدوی</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</li>
                         <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>درباره ما</h4>
-                    <p>نهاد بین المللی درماسان با ارائه محصولات باکیفیت و فرصت‌های درآمدزایی، به شما در رسیدن به اهداف مالی کمک می‌کند.</p>
+                    <p data-footer-about>نهاد بین المللی درماسان با ارائه محصولات باکیفیت و فرصت‌های درآمدزایی، به شما در رسیدن به اهداف مالی کمک می‌کند.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; ۲۰۲۶ DERMASAN International Organization  -  تمامی حقوق محفوظ است.</p>
+                <p data-footer-copyright>&copy; ۲۰۲۶ DERMASAN International Organization  -  تمامی حقوق محفوظ است.</p>
             </div>
         </div>
     </footer>

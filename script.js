@@ -3,6 +3,31 @@ const API_BASE_URL = window.API_BASE_URL || '';
 const apiUrl = (path) => `${API_BASE_URL}${path}`;
 const resolveMediaUrl = (url) => (url && url.startsWith('/uploads') ? `${API_BASE_URL}${url}` : url);
 
+// Representative contact (Sulaiman Fedawi)
+const REP_PHONE_E164 = '+93798292375';
+const REP_WHATSAPP_NUMBER = '93798292375'; // without + for wa.me
+const REP_PHONE_DISPLAY = '+93 798 292 375';
+
+function applyRepresentativeContact() {
+    document.querySelectorAll('[data-rep-phone-text]').forEach((el) => {
+        el.textContent = REP_PHONE_DISPLAY;
+    });
+
+    document.querySelectorAll('[data-rep-tel]').forEach((el) => {
+        el.setAttribute('href', `tel:${REP_PHONE_E164}`);
+    });
+
+    document.querySelectorAll('[data-rep-whatsapp]').forEach((el) => {
+        el.setAttribute('href', `https://wa.me/${REP_WHATSAPP_NUMBER}`);
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyRepresentativeContact);
+} else {
+    applyRepresentativeContact();
+}
+
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
@@ -89,41 +114,24 @@ async function loadContentFromCMS() {
             if (content.contact) {
                 const contactTitle = document.querySelector('#contact .section-header h2');
                 if (contactTitle) contactTitle.textContent = content.contact.title;
-                
-                // Update phone numbers
-                const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-                phoneLinks.forEach(link => {
-                    link.href = 'tel:' + content.contact.phone.replace(/\s/g, '');
-                    link.textContent = content.contact.phone;
-                });
-                
-                // Update WhatsApp
-                const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
-                whatsappLinks.forEach(link => {
-                    link.href = 'https://wa.me/' + content.contact.whatsapp.replace(/[\s+]/g, '');
-                });
-                
-                // Update address
-                const addressElements = document.querySelectorAll('.contact-details p');
-                addressElements.forEach(elem => {
-                    if (elem.textContent.includes('گولایی') || elem.parentElement.querySelector('h4')?.textContent.includes('آدرس')) {
-                        elem.textContent = content.contact.address;
-                    }
-                });
-                
-                // Update working hours
-                const hoursElements = document.querySelectorAll('.contact-item');
-                hoursElements.forEach(item => {
-                    const h4 = item.querySelector('h4');
-                    if (h4 && h4.textContent.includes('ساعات کاری')) {
-                        const pElements = item.querySelectorAll('p');
-                        if (pElements[0]) pElements[0].textContent = content.contact.workingHours;
-                        if (pElements[1]) pElements[1].textContent = content.contact.closedDays;
-                    }
-                });
-                
-                // Update map embed
-                const mapIframe = document.querySelector('.map-container iframe');
+
+                // Update address/hours/map only (avoid overriding personalized phone links)
+                const addressElement = document.querySelector('[data-contact-address]');
+                if (addressElement && content.contact.address) {
+                    addressElement.textContent = content.contact.address;
+                }
+
+                const hoursElement = document.querySelector('[data-contact-hours]');
+                if (hoursElement && content.contact.workingHours) {
+                    hoursElement.textContent = content.contact.workingHours;
+                }
+
+                const closedElement = document.querySelector('[data-contact-closed]');
+                if (closedElement && content.contact.closedDays) {
+                    closedElement.textContent = content.contact.closedDays;
+                }
+
+                const mapIframe = document.querySelector('[data-contact-map]');
                 if (mapIframe && content.contact.mapEmbed) {
                     mapIframe.src = content.contact.mapEmbed;
                 }
@@ -133,9 +141,9 @@ async function loadContentFromCMS() {
             if (content.footer) {
                 const footerCompanyName = document.querySelector('.footer-logo h3');
                 const footerSubtitle = document.querySelector('.footer-subtitle');
-                const footerTagline = document.querySelectorAll('.footer-section p')[0];
-                const footerAbout = document.querySelectorAll('.footer-section p')[3];
-                const footerCopyright = document.querySelector('.footer-bottom p');
+                const footerTagline = document.querySelector('[data-footer-tagline]');
+                const footerAbout = document.querySelector('[data-footer-about]');
+                const footerCopyright = document.querySelector('[data-footer-copyright]');
                 
                 if (footerCompanyName) footerCompanyName.textContent = content.footer.companyName;
                 if (footerSubtitle) footerSubtitle.textContent = content.footer.subtitle;
@@ -152,81 +160,45 @@ async function loadContentFromCMS() {
     }
 }
 
-// ===== LOGO LOADER ANIMATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Page loaded - starting loader');
-    
-    // Load content from CMS first
-    loadContentFromCMS();
-    
+// ===== INTRO LOADER =====
+document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('logoLoader');
-    const header = document.getElementById('mainHeader');
     const body = document.body;
-    
-    // Force scroll to top on page load
+
+    const cmsPromise = loadContentFromCMS();
+
+    const prefersReducedMotion =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const MIN_LOADER_MS = prefersReducedMotion ? 150 : 900;
+    const MAX_LOADER_MS = prefersReducedMotion ? 450 : 2200;
+    const FADE_MS = prefersReducedMotion ? 120 : 450;
+
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    // Ensure scroll starts at top after refresh
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    
-    // Ensure scroll is locked during intro (body.loading class handles this)
-    // Prevent any scroll events
-    const preventScroll = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-    };
-    
-    // Add scroll prevention
-    window.addEventListener('scroll', preventScroll, { passive: false });
-    window.addEventListener('wheel', preventScroll, { passive: false });
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-    
-    // Force hide loader after 3 seconds
-    setTimeout(() => {
-        console.log('Hiding loader');
-        if (loader) {
-            loader.classList.add('fade-out');
-        }
-        
+
+    Promise.race([Promise.allSettled([cmsPromise, wait(MIN_LOADER_MS)]), wait(MAX_LOADER_MS)]).then(() => {
+        if (loader) loader.classList.add('fade-out');
+
         setTimeout(() => {
-            if (loader) {
-                loader.style.display = 'none';
-                console.log('Loader hidden');
-            }
+            if (loader) loader.remove();
             if (body) {
                 body.classList.remove('loading');
+                body.classList.add('page-enter');
             }
-            
-            // Remove scroll prevention
-            window.removeEventListener('scroll', preventScroll);
-            window.removeEventListener('wheel', preventScroll);
-            window.removeEventListener('touchmove', preventScroll);
-            
+
             // Ensure we're at the top after unlocking
             window.scrollTo(0, 0);
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
-            
-            // Start hero animations
-            startHeroAnimations();
-            
-            // Show header on scroll
-            window.addEventListener('scroll', showHeaderOnScroll, { once: false });
-        }, 800);
-    }, 3000);
+        }, FADE_MS);
+    });
 });
-
-// Start hero animations
-function startHeroAnimations() {
-    console.log('Starting hero animations');
-    const heroTitle = document.querySelector('.hero-title');
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    const heroBtn = document.querySelector('.hero .btn');
-    
-    if (heroTitle) heroTitle.classList.add('animate-in');
-    if (heroSubtitle) heroSubtitle.classList.add('animate-in');
-    if (heroBtn) heroBtn.classList.add('animate-in');
-}
 
 // ===== HEADER ANIMATION ON SCROLL =====
 let hasScrolled = false;
@@ -247,10 +219,22 @@ function showHeaderOnScroll() {
 
 // ===== SMOOTH SCROLLING FOR NAVIGATION LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const currentHref = this.getAttribute('href');
+        if (!currentHref || currentHref === '#') return;
+
+        let target;
+        try {
+            target = document.querySelector(currentHref);
+        } catch (_) {
+            return;
+        }
+
         if (target) {
+            e.preventDefault();
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -339,50 +323,6 @@ navLinks.forEach(link => {
     });
 });
 
-// ===== CONTACT FORM HANDLING =====
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
-        
-        // Create WhatsApp message
-        const whatsappMessage = `سلام، من ${name} هستم.\n\nشماره تماس: ${phone}\n\nپیام:\n${message}\n\n---\nارسال شده از وبسایت DERMASAN`;
-        
-        // Encode message for URL
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-        
-        // WhatsApp number (without + or spaces)
-        const whatsappNumber = '93796582690';
-        
-        // Create WhatsApp URL
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-        
-        // Show success animation
-        const btn = contactForm.querySelector('.btn-primary');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fab fa-whatsapp"></i> در حال باز کردن واتساپ...';
-        btn.style.background = '#25D366';
-        
-        // Open WhatsApp
-        setTimeout(() => {
-            window.open(whatsappURL, '_blank');
-            
-            // Reset form and button after a moment
-            setTimeout(() => {
-                contactForm.reset();
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-            }, 2000);
-        }, 500);
-    });
-}
-
 // ===== SCROLL ANIMATIONS (AOS - Animate On Scroll) =====
 // Trigger animation when elements enter from the bottom of the viewport
 const observerOptions = {
@@ -422,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Simulate the hover 3D tilt effect
                     card.style.transition = 'transform 0.6s ease, box-shadow 0.6s ease';
                     card.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px) scale(1.02)';
-                    card.style.boxShadow = '0 15px 40px rgba(30, 126, 52, 0.3)';
+                    card.style.boxShadow = '0 15px 40px rgba(var(--primary-rgb), 0.3)';
                     
                     // Hold for a moment
                     setTimeout(() => {
@@ -448,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== HERO SECTION ANIMATIONS =====
-// Now handled by startHeroAnimations() function above
+// Intro animations are handled via `body.page-enter` in CSS.
 
 // ===== PARALLAX EFFECT =====
 window.addEventListener('scroll', () => {
@@ -461,12 +401,13 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ===== CURSOR EFFECT FOR CARDS =====
+// ===== CURSOR & TAP EFFECTS FOR CARDS/INTERACTIONS =====
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 const cards = document.querySelectorAll('.vision-card, .product-card, .feature-item');
 
 cards.forEach(card => {
     // Desktop: Mouse hover effect
-    if (!isMobile) {
+    if (!isTouchDevice) {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -485,6 +426,25 @@ cards.forEach(card => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
         });
     }
+});
+
+// Tap-to-animate for touch devices (simulate hover states)
+const tapTargets = document.querySelectorAll(
+    '.logo, .nav-menu a, .lang-btn, .hero-feature, .btn, .btn-primary, .btn-hero-primary, .btn-hero-secondary, .scroll-icon, .vision-card, .product-card, .btn-product, .whatsapp-link'
+);
+
+tapTargets.forEach(el => {
+    el.addEventListener('touchstart', () => {
+        el.classList.add('is-tapped');
+    }, { passive: true });
+    
+    el.addEventListener('touchend', () => {
+        setTimeout(() => el.classList.remove('is-tapped'), 180);
+    });
+    
+    el.addEventListener('touchcancel', () => {
+        el.classList.remove('is-tapped');
+    });
 });
 
 // ===== TYPING EFFECT FOR HERO TITLE (Optional Enhancement) =====

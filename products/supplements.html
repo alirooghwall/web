@@ -10,7 +10,7 @@
     <style>
         .product-detail-hero {
             padding: 140px 0 80px;
-            background: linear-gradient(135deg, #0a2d1f 0%, #10402b 100%);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 55%, var(--accent-color) 110%);
             color: white;
             text-align: center;
         }
@@ -33,7 +33,11 @@
         }
         .product-detail-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(30, 126, 52, 0.2);
+            box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.25);
+        }
+        .product-detail-card.is-active {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.25);
         }
         .product-info {
             padding: 1.5rem;
@@ -77,6 +81,10 @@
             background: var(--accent-color);
             transform: scale(1.05);
         }
+        .btn-order.is-active {
+            background: var(--accent-color);
+            transform: scale(1.05);
+        }
         .back-link {
             display: inline-block;
             margin: 2rem 0;
@@ -88,6 +96,10 @@
             transition: 0.3s;
         }
         .back-link:hover {
+            background: var(--primary-color);
+            color: rgb(85, 85, 85);
+        }
+        .back-link.is-active {
             background: var(--primary-color);
             color: rgb(85, 85, 85);
         }
@@ -202,7 +214,7 @@
     <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2rem 0;">
         <p>&copy; 2024 DERMASAN International Organization - تمامی حقوق محفوظ است</p>
         <p style="margin-top: 0.5rem;">
-            <a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link">
+            <a href="https://wa.me/93798292375" target="_blank" rel="noopener" class="whatsapp-link">
                 <i class="fab fa-whatsapp"></i> تماس از طریق واتساپ
             </a>
         </p>
@@ -210,11 +222,34 @@
 
     <script>
         function orderProduct(productName) {
-            const phone = '93796582690';
+            const phone = '93798292375';
             const message = `سلام، من می‌خواهم ${productName} را سفارش دهم.`;
             const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.product-detail-card');
+            const setActiveCard = (card) => {
+                cards.forEach((c) => c.classList.remove('is-active'));
+                card.classList.add('is-active');
+            };
+
+            cards.forEach((card) => {
+                card.addEventListener('touchstart', () => setActiveCard(card), { passive: true });
+                card.addEventListener('click', () => setActiveCard(card));
+            });
+
+            const tapHighlight = (element) => {
+                element.classList.add('is-active');
+                setTimeout(() => element.classList.remove('is-active'), 250);
+            };
+
+            document.querySelectorAll('.btn-order, .back-link').forEach((el) => {
+                el.addEventListener('touchstart', () => tapHighlight(el), { passive: true });
+                el.addEventListener('click', () => tapHighlight(el));
+            });
+        });
     </script>
 </body>
 </html>
