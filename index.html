@@ -2,386 +2,113 @@
 <html lang="fa-AF" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>DERMASAN - نهاد بین المللی درماسان</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصور احمد نظری | نوبت‌گیری خدمات</title>
+    <meta name="description" content="صفحه شخصی مصور احمد نظری برای نوبت‌گیری خدمات و تماس مستقیم.">
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Persian/Arabic Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Estedad:wght@300;400;500;600;700;800;900&family=Yekan+Bakh:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Estedad:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="loading">
-    <!-- Loading Screen with Logo Animation -->
-    <div class="logo-loader" id="logoLoader">
-        <div class="loader-content">
-            <img src="logo.png" alt="DERMASAN Logo" class="loader-logo">
-            <h1 class="loader-text">DERMASAN</h1>
-            <p class="loader-subtitle">International Organization</p>
-            <div class="loader-progress">
-                <div class="loader-bar"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Header -->
-    <header id="mainHeader" class="header-hidden">
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo" id="headerLogo">
-                    <img src="logo.png" alt="DERMASAN Logo">
-                    <div class="logo-text">
-                        <span class="company-name">DERMASAN</span>
-                        <span class="company-subtitle">International Organization</span>
-                    </div>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="active"><i class="fas fa-home"></i> <span data-translate="nav_home">خانه</span></a></li>
-                    <li><a href="#about"><i class="fas fa-info-circle"></i> <span data-translate="nav_about">درباره ما</span></a></li>
-                    <li><a href="#vision"><i class="fas fa-eye"></i> <span data-translate="nav_vision">چشم‌انداز</span></a></li>
-                    <li><a href="#products"><i class="fas fa-box-open"></i> <span data-translate="nav_products">محصولات</span></a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope"></i> <span data-translate="nav_contact">تماس با ما</span></a></li>
-                    <li class="nav-divider"></li>
-                    <li class="language-switcher-nav">
-                        <button class="lang-btn active" data-lang="dari" title="دری">
-                            <i class="fas fa-globe"></i> دری
-                        </button>
-                        <button class="lang-btn" data-lang="pashto" title="پښتو">
-                            پښتو
-                        </button>
-                        <button class="lang-btn" data-lang="english" title="English">
-                            EN
-                        </button>
-                    </li>
+<body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="#home" class="brand">
+                <img src="logo.png" alt="DERMASAN" class="brand-logo">
+                <span>DERMASAN</span>
+            </a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about">درباره</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#reservation">هماهنگی</a></li>
+                    <li><a href="#contact">تماس</a></li>
                 </ul>
-                <button class="mobile-menu-toggle" aria-label="منوی موبایل">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
+            <a class="btn btn-compact" href="https://wa.me/93788799351" target="_blank" rel="noopener noreferrer">واتساپ</a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-particles"></div>
-        <div class="container hero-content">
-            <!-- Logo Test (Temporary) -->
-            <div class="logo-showcase" style="margin-bottom: 2rem;">
-                <img src="logo.png" alt="لوگوی شرکت" style="width: 150px; height: 150px;">
+    <main id="home">
+        <section class="hero container">
+            <div class="hero-media">
+                <img src="mosaw.jpeg" alt="مصور احمد نظری" class="profile-image">
             </div>
-            <h1 class="hero-title animate-in" data-translate="hero_title">به نهاد بین المللی درماسان خوش آمدید</h1>
-            <p class="hero-subtitle animate-in" data-translate="hero_subtitle">مسیر شما به سوی موفقیت و استقلال مالی</p>
-            <a href="#contact" class="btn btn-primary animate-in">
-                <i class="fas fa-phone-alt"></i> <span data-translate="hero_btn">همین حالا با ما تماس بگیرید</span>
-            </a>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="about_title">درباره شرکت ما</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 data-translate="about_who">ما کی هستیم؟</h3>
-                    <p data-translate="about_text1">
-                        شرکت درماسان یک شرکت پیشرو در زمینه بازاریابی شبکه‌ای است که با ارائه محصولات باکیفیت و فرصت‌های شغلی منحصر به فرد، به افراد کمک می‌کند تا به اهداف مالی و حرفه‌ای خود دست یابند.
-                    </p>
-                    <p data-translate="about_text2">
-                        ما با تکیه بر اصول اخلاقی، شفافیت و تعهد به موفقیت مشتریان و همکاران خود، یک محیط حرفه‌ای و حمایتی را فراهم کرده‌ایم که در آن هر فردی می‌تواند با تلاش و پشتکار به موفقیت دست یابد.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision & Mission Section -->
-    <section id="vision" class="vision">
-        <div class="container">
-            <div class="vision-grid">
-                <div class="vision-card" data-aos="fade-up">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 data-translate="mission_title">مأموریت ما</h3>
-                    <p data-translate="mission_text">
-                        تامین محصولات باکیفیت و ایجاد فرصت‌های شغلی برای افرادی که به دنبال استقلال مالی و رشد شخصی هستند.
-                    </p>
-                </div>
-                <div class="vision-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 data-translate="vision_title">چشم‌انداز ما</h3>
-                    <p data-translate="vision_text">
-                        تبدیل شدن به معتبرترین سازمان بازاریابی شبکه‌ای در منطقه با ارائه ارزش‌های واقعی به مشتریان و شرکای تجاری.
-                    </p>
-                </div>
-                <div class="vision-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 data-translate="values_title">ارزش‌های ما</h3>
-                    <p data-translate="values_text">
-                        صداقت، شفافیت، تعهد به کیفیت، احترام به افراد و تلاش برای ایجاد فرصت‌های برابر برای همه.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="products_title">محصولات ما</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="products-content">
-                <p class="products-intro" data-translate="products_intro">
-                    ما طیف گسترده‌ای از محصولات باکیفیت را در زمینه‌های مختلف ارائه می‌دهیم که نیازهای روزمره مشتریان را برآورده می‌سازد.
+            <div class="hero-content">
+                <p class="eyebrow">کارمند نهاد بین المللی درماسان</p>
+                <h1 class="name-title">مصور احمد نظری</h1>
+                <p class="lead">
+                    مصور احمد نظری یکی از کارمندان فعال این نهاد است که با تعهد، نظم و برخورد محترمانه خدمات ارائه می‌کند.
+                    شما می‌توانید برای هماهنگی کار یا گرفتن نوبت، از همین صفحه اقدام کنید.
                 </p>
-                <div class="products-grid">
-                    <div class="product-card" data-aos="zoom-in">
-                        <div class="product-image">
-                            <img src="1.png" alt="محصولات سلامت" onerror="this.src='logo.png'">
-                        </div>
-                        <div class="product-content">
-                            <h4 data-translate="product_health_title">محصولات سلامت و تندرستی</h4>
-                            <p class="product-description" data-translate="product_health_desc">مکمل‌های غذایی طبیعی، ویتامین‌ها و محصولات سلامتی که به بهبود عملکرد بدن و تقویت سیستم ایمنی کمک می‌کنند.</p>
-                            <ul class="product-features">
-                                <li><i class="fas fa-check"></i> <span data-translate="product_health_f1">100% طبیعی و ارگانیک</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_health_f2">تایید شده توسط متخصصین</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_health_f3">بدون عوارض جانبی</span></li>
-                            </ul>
-                            <a href="products/healthcare.html" class="btn-product">
-                                <i class="fas fa-eye"></i> مشاهده محصولات
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-image">
-                            <img src="2.png" alt="محصولات زیبایی" onerror="this.src='logo.png'">
-                        </div>
-                        <div class="product-content">
-                            <h4 data-translate="product_beauty_title">محصولات زیبایی و مراقبت پوست</h4>
-                            <p class="product-description" data-translate="product_beauty_desc">کرم‌ها، لوسیون‌ها و محصولات مراقبت پوست با فرمول‌های پیشرفته برای زیبایی و سلامت پوست شما.</p>
-                            <ul class="product-features">
-                                <li><i class="fas fa-check"></i> <span data-translate="product_beauty_f1">مناسب انواع پوست</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_beauty_f2">ضد چروک و آبرسان</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_beauty_f3">محصولات باکیفیت اروپایی</span></li>
-                            </ul>
-                            <a href="products/cosmetics.html" class="btn-product">
-                                <i class="fas fa-eye"></i> مشاهده محصولات
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-image">
-                            <img src="3.png" alt="محصولات ارگانیک" onerror="this.src='logo.png'">
-                        </div>
-                        <div class="product-content">
-                            <h4 data-translate="product_organic_title">محصولات ارگانیک</h4>
-                            <p class="product-description" data-translate="product_organic_desc">محصولات طبیعی و ارگانیک بدون مواد شیمیایی، مناسب برای یک زندگی سالم و پایدار.</p>
-                            <ul class="product-features">
-                                <li><i class="fas fa-check"></i> <span data-translate="product_organic_f1">گواهینامه ارگانیک معتبر</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_organic_f2">بدون مواد شیمیایی</span></li>
-                                <li><i class="fas fa-check"></i> <span data-translate="product_organic_f3">سازگار با محیط زیست</span></li>
-                            </ul>
-                            <a href="products/supplements.html" class="btn-product">
-                                <i class="fas fa-eye"></i> مشاهده محصولات
-                            </a>
-                        </div>
-                    </div>
+                <div class="hero-actions">
+                    <a class="btn" href="https://wa.me/93788799351" target="_blank" rel="noopener noreferrer">نوبت‌گیری در واتساپ</a>
+                    <a class="btn btn-outline" href="tel:+93788799351">تماس مستقیم</a>
                 </div>
+            </div>
+        </section>
+
+        <section id="about" class="container section">
+            <h2 class="section-title">درباره مصور</h2>
+            <p>
+                مصور احمد نظری به وقت‌شناسی، مسئولیت‌پذیری و کیفیت کار شناخته می‌شود.
+                همکاران و مراجعه‌کنندگان از همکاری منظم و دقت بالای او رضایت دارند.
+            </p>
+        </section>
+
+        <section id="services" class="container section">
+            <h2 class="section-title">خدمات قابل نوبت‌گیری</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>حضور به موقع</h3>
+                    <p>اجرای کارها در زمان تعیین شده با هماهنگی واضح و پاسخگویی مناسب.</p>
+                </article>
+                <article class="card">
+                    <h3>همکاری قابل اعتماد</h3>
+                    <p>پشتیبانی منظم برای نیازهای روزانه و درخواست‌های مبتنی بر وقت قبلی.</p>
+                </article>
+                <article class="card">
+                    <h3>رفتار حرفه‌ای</h3>
+                    <p>برخورد محترمانه، نظم کاری و تمرکز کامل برای هر نوبت ثبت شده.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="reservation" class="container section reservation">
+            <div class="reservation-head">
+                <h2 class="section-title">هماهنگی و نوبت‌گیری</h2>
+                <p>برای ثبت درخواست، یکی از روش‌های زیر را انتخاب کنید.</p>
+            </div>
+            <div class="reservation-actions">
+                <a class="btn" href="https://wa.me/93788799351" target="_blank" rel="noopener noreferrer">ارسال پیام در واتساپ</a>
+                <a class="btn btn-outline" href="tel:+93788799351">تماس به شماره <span class="phone-ltr">+93 78 879 9351</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>تماس</h3>
+                <p><a href="tel:+93788799351"><span class="phone-ltr">+93 78 879 9351</span></a></p>
+                <p><a href="https://wa.me/93788799351" target="_blank" rel="noopener noreferrer">گفتگو در واتساپ</a></p>
+            </div>
+            <div>
+                <h3>کارمند</h3>
+                <p>مصور احمد نظری</p>
+                <p>خدمت‌رسانی با اعتماد و مسئولیت‌پذیری.</p>
+            </div>
+            <div>
+                <h3>دسترسی</h3>
+                <p>نوبت‌گیری از طریق تماس تلفنی یا واتساپ.</p>
+                <p>پاسخ‌دهی سریع در ساعات کاری.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="why_title">چرا ما را انتخاب کنید؟</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item" data-aos="fade-right">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h4 data-translate="why_quality_title">محصولات با کیفیت</h4>
-                    <p data-translate="why_quality_text">تمام محصولات ما با استانداردهای بین‌المللی تولید می‌شوند</p>
-                </div>
-                <div class="feature-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 data-translate="why_income_title">فرصت‌های درآمدزایی</h4>
-                    <p data-translate="why_income_text">سیستم پورسانت منصفانه و شفاف برای همکاران</p>
-                </div>
-                <div class="feature-item" data-aos="fade-left" data-aos-delay="100">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h4 data-translate="why_training_title">آموزش و پشتیبانی</h4>
-                    <p data-translate="why_training_text">برنامه‌های آموزشی رایگان و پشتیبانی ۲۴ ساعته</p>
-                </div>
-                <div class="feature-item" data-aos="fade-left">
-                    <div class="feature-icon-wrapper">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4 data-translate="why_community_title">جامعه حمایتی</h4>
-                    <p data-translate="why_community_text">عضویت در یک جامعه قوی و حمایت‌گر از همکاران</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Photo Showcase Section -->
-    <section id="photos" class="photo-showcase">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="photos_title">تصاویر</h2>
-                <div class="divider"></div>
-                <p class="section-description" data-translate="photos_subtitle">نمایی کوتاه از محیط ما</p>
-            </div>
-            <div class="gallery-images-grid">
-                <div class="gallery-image-item" data-aos="zoom-in">
-                    <div class="gallery-image-container">
-                        <img src="a.jpeg" alt="تصویر اول">
-                    </div>
-                    <div class="gallery-image-caption" data-translate="photos_caption_1">نمای داخلی</div>
-                </div>
-                <div class="gallery-image-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="gallery-image-container">
-                        <img src="b.jpeg" alt="تصویر دوم">
-                    </div>
-                    <div class="gallery-image-caption" data-translate="photos_caption_2">نمای داخلی</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 data-translate="contact_title">تماس با ما</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3 data-translate="contact_info">اطلاعات تماس</h3>
-                    <div class="contact-item" data-aos="fade-up">
-                        <div class="contact-icon-wrapper">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 data-translate="phone_label">تلفن - دفتر مرکزی</h4>
-                            <p dir="ltr"><a href="tel:+93796582690" style="color: inherit; text-decoration: none;">+93 79 658 2690</a></p>
-                            <p><a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> <span data-translate="whatsapp_label">واتساپ</span></a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="contact-icon-wrapper">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 data-translate="address_label">آدرس</h4>
-                            <p data-translate="address_text">حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
-                        </div>
-                    </div>
-                    <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="contact-icon-wrapper">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 data-translate="hours_label">ساعات کاری</h4>
-                            <p data-translate="hours_text">شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</p>
-                            <p data-translate="hours_closed">جمعه: تعطیل</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Google Maps -->
-                <div class="contact-map" data-aos="fade-up">
-                    <h3 data-translate="map_title">موقعیت دفتر مرکزی</h3>
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13141.651479795188!2d69.120597!3d34.5684183!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d16fbe4a155555%3A0x1e76dde7094e7217!2sFaizi%20Hospital!5e0!3m2!1sen!2s!4v1769622967857!5m2!1sen!2s"
-                            width="100%" 
-                            height="400" 
-                            style="border:0; border-radius: 15px;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                        <p class="map-note"><i class="fas fa-map-marker-alt"></i> حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="DERMASAN Logo">
-                        <div>
-                            <h3>DERMASAN</h3>
-                            <span class="footer-subtitle">International Organization</span>
-                        </div>
-                    </div>
-                    <p>مسیر شما به سوی موفقیت و استقلال مالی</p>
-                </div>
-                <div class="footer-section">
-                    <h4>لینک‌های سریع</h4>
-                    <ul>
-                        <li><a href="#home">خانه</a></li>
-                        <li><a href="#about">درباره ما</a></li>
-                        <li><a href="#vision">چشم‌انداز</a></li>
-                        <li><a href="#products">محصولات</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>تماس</h4>
-                    <ul>
-                        <li><i class="fas fa-phone-alt"></i> دفتر مرکزی: <span dir="ltr"><a href="tel:+93796582690" style="color: inherit;">+93 79 658 2690</a></span></li>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/93796582690" target="_blank" class="whatsapp-link">واتساپ</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> حصه اول، عقب شفاخانه فیضی، پوهنتون کابورا</li>
-                        <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: ۸ صبح تا ۴ عصر</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>درباره ما</h4>
-                    <p>نهاد بین المللی درماسان با ارائه محصولات باکیفیت و فرصت‌های درآمدزایی، به شما در رسیدن به اهداف مالی کمک می‌کند.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; ۲۰۲۶ DERMASAN International Organization  -  تمامی حقوق محفوظ است.</p>
-            </div>
-        </div>
+        <p class="copyright">&copy; مصور احمد نظری - تمامی حقوق محفوظ است.</p>
     </footer>
-
-    <script>
-        // Set this to your Render URL when hosting the site on GitHub Pages
-        window.API_BASE_URL = 'https://dermasan.vercel.app/';
-    </script>
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
